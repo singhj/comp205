@@ -1,8 +1,8 @@
 {
   "name": "02-01 Assignment and Substitution",
-  "endpoint": "cal/COMP205/fa19/02-02-assignment-and-substitution",
+  "endpoint": "cal/COMP205/fa19/02-01-assignment-and-substitution",
   "src": [
-    "02-02-assignment-and-substitution.ipynb"
+    "02-01-assignment-and-substitution.ipynb"
   ],
   "tests": {
       "tests/q*.py": "ok_test"
