@@ -1,8 +1,8 @@
 {
-  "name": "Clustering",
-  "endpoint": "cal/COMP205/su19/clustering",
+  "name": "Reading files",
+  "endpoint": "cal/COMP205/su19/readingfiles",
   "src": [
-    "Clustering.ipynb"
+    "Reading files.ipynb"
   ],
   "tests": {
       "tests/q*.py": "ok_test"

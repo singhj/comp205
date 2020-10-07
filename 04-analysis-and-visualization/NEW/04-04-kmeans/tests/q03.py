@@ -1,15 +1,20 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[ ]:
+
+
 test = {
-  'name': 'Question 4',
+  'name': 'Question 3',
   'points': 1,
   'suites': [
     {
       'cases': [
+        
         {
           'code': r"""
-          >>> n4
-          array([[210, 400],
-                 [500, 422],
-                 [ 40,  50]], dtype=int64)
+          >>> str(predicted_money) == ('[1 0]')
+          True
           """,
           'hidden': False,
           'locked': False
@@ -22,3 +27,4 @@ test = {
     }
   ]
 }
+

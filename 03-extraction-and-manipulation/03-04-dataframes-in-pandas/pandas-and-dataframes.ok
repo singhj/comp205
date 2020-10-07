@@ -1,8 +1,8 @@
 {
-  "name": "Clustering",
-  "endpoint": "cal/COMP205/su19/clustering",
+  "name": "Pandas and dataframes",
+  "endpoint": "cal/COMP205/su19/pandasanddataframes",
   "src": [
-    "Clustering.ipynb"
+    "Pandas and dataframes.ipynb"
   ],
   "tests": {
       "tests/q*.py": "ok_test"

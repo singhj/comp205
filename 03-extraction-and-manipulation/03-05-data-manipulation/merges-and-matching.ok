@@ -1,8 +1,8 @@
 {
-  "name": "Clustering",
-  "endpoint": "cal/COMP205/su19/clustering",
+  "name": "Merges and matching",
+  "endpoint": "cal/COMP205/su19/mergesandmatching",
   "src": [
-    "Clustering.ipynb"
+    "Merges and matching.ipynb"
   ],
   "tests": {
       "tests/q*.py": "ok_test"

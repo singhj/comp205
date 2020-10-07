@@ -1,8 +1,8 @@
 {
-  "name": "04-02 Classification",
-  "endpoint": "cal/COMP205/fa19/04_02_classification",
+  "name": "Classification",
+  "endpoint": "cal/COMP205/su19/classification",
   "src": [
-    "04-02-classification.ipynb"
+    "Classification.ipynb"
   ],
   "tests": {
       "tests/q*.py": "ok_test"

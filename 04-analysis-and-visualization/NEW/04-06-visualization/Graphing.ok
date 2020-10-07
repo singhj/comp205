@@ -1,12 +1,12 @@
 {
-  "name": "Clustering",
-  "endpoint": "cal/COMP205/su19/clustering",
+  "name": "Graphing",
+  "endpoint": "cal/COMP205/fa19/bargraph",
   "src": [
-    "Clustering.ipynb"
+    "Graphing.ipynb"
   ],
   "tests": {
-      "tests/q*.py": "ok_test"
-  },
+    "tests/q*.py": "ok_test"
+  }, 
   "protocols": [
       "file_contents",
       "grading", 

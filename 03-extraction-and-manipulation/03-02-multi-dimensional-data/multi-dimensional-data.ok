@@ -1,8 +1,8 @@
 {
-  "name": "Clustering",
-  "endpoint": "cal/COMP205/su19/clustering",
+  "name": "Multi-dimensional data",
+  "endpoint": "cal/COMP205/su19/multidimensional",
   "src": [
-    "Clustering.ipynb"
+    "Multi-dimensional data.ipynb"
   ],
   "tests": {
       "tests/q*.py": "ok_test"

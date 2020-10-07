@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[ ]:
+
+
 test = {
   'name': 'Question 4',
   'points': 1,
@@ -6,10 +12,16 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> n4
-          array([[210, 400],
-                 [500, 422],
-                 [ 40,  50]], dtype=int64)
+          >>> "'width': 2" in str(pi._data)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> "'color': '#000000'" in str(pi._data)
+          True
           """,
           'hidden': False,
           'locked': False
@@ -22,3 +34,4 @@ test = {
     }
   ]
 }
+

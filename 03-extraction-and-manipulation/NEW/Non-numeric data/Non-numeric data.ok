@@ -1,8 +1,8 @@
 {
-  "name": "Clustering",
-  "endpoint": "cal/COMP205/su19/clustering",
+  "name": "Non-numeric data",
+  "endpoint": "cal/COMP205/su19/nonnumeric",
   "src": [
-    "Clustering.ipynb"
+    "Non-numeric data.ipynb"
   ],
   "tests": {
       "tests/q*.py": "ok_test"

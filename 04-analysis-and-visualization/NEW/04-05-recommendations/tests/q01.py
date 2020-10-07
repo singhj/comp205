@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[ ]:
+
+
 test = {
   'name': 'Question 1',
   'points': 1,
@@ -6,10 +12,16 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> nf
-          array([[ 20,   2],
-                 [100,   4],
-                 [ 30,   2]], dtype=int64)
+          >>> ppl.shape
+          (20, 11)
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> type(ppl)
+          <class 'pandas.core.frame.DataFrame'>
           """,
           'hidden': False,
           'locked': False
@@ -22,3 +34,4 @@ test = {
     }
   ]
 }
+
