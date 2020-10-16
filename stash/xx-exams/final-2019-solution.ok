@@ -1,0 +1,16 @@
+{
+  "name": "Solution to 2019 Final",
+  "endpoint": "cal/COMP205/fa19/final_2019_solution",
+  "src": [
+    "final-2019-solution.ipynb"
+  ],
+  "tests": {
+      "tests/q*.py": "ok_test"
+  },
+  "protocols": [
+      "file_contents",
+      "grading", 
+      "scoring", 
+      "backup"
+  ]
+}
