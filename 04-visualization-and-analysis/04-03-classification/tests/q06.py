@@ -6,7 +6,7 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> expected_results.shape
+          >>> actual_targets.shape
           (20,)
           """,
           'hidden': False,
@@ -14,7 +14,7 @@ test = {
         },
         {
           'code': r"""
-          >>> type(expected_results)
+          >>> type(actual_targets)
           <class 'numpy.ndarray'>
           """,
           'hidden': False,
