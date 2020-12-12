@@ -1,0 +1,250 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# COMP 205: Quiz 4\n",
+    "## Fall 2020\n",
+    "\n",
+    "Please enter your answers into this workbook in the places provided. This is an open-Internet examination. You may use any books and materials, and the entire internet -- as well as all of the class workbooks and examples -- in answering these questions. You may not communicate with _other people_ in completing this workbook. \n",
+    "\n",
+    "Please enter your answers into this workbook in the places provided. You will need to create extra cells in the workbook to explain your reasoning in support of your answers. Please make sure that your \"final answer\" for each question is in the place marked for that purpose. \n",
+    "\n",
+    "There are only 2 questions but Q2 has a number of corner cases. Your answer will be evaluated on how completely and elegantly you answer it. \n",
+    "\n",
+    "<span style=\"color:red\">Please do not share this workbook with others until after the exam window is closed on Wednesday. Also, please sign the last cell of this notebook before submitting.</span>\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# News Stream Analysis\n",
+    "\n",
+    "This case study seeks to read a news RSS feed and process the headlines are they arrive!\n",
+    "\n",
+    "To begin, uncomment the next cell and run it to install `feedparser` using pip. You need only do it once (but doing it more than once won't hurt anything). Run the next cell."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# !pip install feedparser"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This notebook depends on two external files: `news_feeder.py` and `moral_foundations.py`. They are in the same directory as the `.ipynb` file but your setup may be different and a bit of experimentation may be involved."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import news_feeder, moral_foundations"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Reading Headlines\n",
+    "\n",
+    "The next cell reads headlines from the New York Times, BBC and a few other news sources. Once you start it, it will keep going! Do a kernel interrupt to stop it. To give the next cell a name, because we will be referring to it, let's call it a **streaming cell**."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Streaming Cell\n",
+    "import sys\n",
+    "for feed in news_feeder.feeds:\n",
+    "    for (tt, name, title, link) in feed.getHeadline():\n",
+    "        print (title)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1. Clean input\n",
+    "\n",
+    "To clean a headline, do this:\n",
+    "\n",
+    "1. Remove any punctuations and replace them with spaces. This means that words like O'Hara will become two words.\n",
+    "That's OK.\n",
+    "2. Replace multiple spaces with a single space.\n",
+    "3. Change all words to lowercase.\n",
+    "\n",
+    "Copy the above cell and replace the print line to `print (clean(title))` to examine the cleaned up input. Python has libraries for processing text, called `nltk` (natural language toolkit) but we didn't study `nltk` &#x2639; and this is a poor-person's implementation!"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Moral Foundations Theory\n",
+    "\n",
+    "<img align=\"right\" style=\"padding-left:10px; height: 55%; width: 55%\" src=\"figures/political-camps-moral-foundations.png\" ></a>\n",
+    "\n",
+    "The second part of this case study is Moral Foundations Theory. Google the phrase or visit [MoralFoundations.org](https://moralfoundations.org/) to learn more about the theory (or watch [Jonathan Haidt's Ted Talk](https://www.ted.com/talks/jonathan_haidt_the_moral_roots_of_liberals_and_conservatives/)).\n",
+    "\n",
+    "For the purpose of this exercise, you needn't learn much about the theory &mdash; we will be using the Moral Foundations team's list of words that connote different dimensions of morality. \n",
+    "\n",
+    "* **Care** connotes safety, peace, compassion, etc.\n",
+    "* **Harm**, Care's opposite, connotes war, fight, hurt, kill, suffer, etc.\n",
+    "\n",
+    "In the coding, the above two moral opposites are called 'HarmVirtue' and 'HarmVice' respectively. Similarly for other moral dimensions. The categories and the words that belong to each are available on-line in a [Moral Foundations Dictionary](https://moralfoundations.org/wp-content/uploads/files/downloads/moral%20foundations%20dictionary.dic). The dictionary words often include &ast;s, for example `peace`&ast;, which could be peace, peaceful, peacefully, even peacenik!\n",
+    "\n",
+    "In the next cell, we retrieve the groups and codes. Go ahead and print them to discern the pattern."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "groups, codes = moral_foundations.read_dicts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "groups"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Codes\n",
+    "\n",
+    "Print the codes first"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "codes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Understanding Codes\n",
+    "\n",
+    "The first key-value in the dictionary is `'safe*': '01'.` It means that safe, safely, safety, ... are all in \n",
+    "group 01 (HarmVirtue). \n",
+    "\n",
+    "Also notice that some words (`preserve`, for example) belong in multiple groups."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2. Write a function for finding categories of a word\n",
+    "\n",
+    "We want a function `find_word_categories(word)` such that the **assert** statements at the end of the next cell all pass."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def find_word_categories(word):\n",
+    "    # fill in\n",
+    "    return []\n",
+    "\n",
+    "assert (find_word_categories('hurt') == ['02'])\n",
+    "assert (find_word_categories('tradition') == ['07'])\n",
+    "assert (find_word_categories('disease') == ['10'])\n",
+    "assert (find_word_categories('@nytnational') == [])\n",
+    "assert (find_word_categories('preserve') == ['01', '07', '09'])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3. Classify each headline with its moral foundation group\n",
+    "\n",
+    "Identify each headline with its moral code group. (Some headlines won't have any at all).\n",
+    "\n",
+    "A headline like \"A tradition can be many things — for some, it's food. For others, it's faith. For many, family. \"\n",
+    "should find {'AuthorityVirtue': 'tradition'} and {'IngroupVirtue': 'family'}.\n",
+    "\n",
+    "Rewrite the streaming cell to print the moral code group along with the title.\n",
+    "\n",
+    "**Note:** There are many corner cases in this problem. Your answer will be evaluated on how cleanly you address them."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# when you have completed this exercise\n",
+    "\n",
+    "1. Rerun all cells from top to bottom and check that they work. Please sign the next line.\n",
+    "\n",
+    "2. <span style=\"color:blue\">I, **(your name)**, certify that the work in this notebook is my own. </span>\n",
+    "    \n",
+    "3. <span style=\"color:blue\">Further, I promise not to share or discuss the solutions until after the submission period has passed (on midnight of 10/18/20). </span>\n",
+    "\n",
+    "You can submit a notebook by saving it as PDF. In the cluster environment, it's File | Print (Save as PDF) and submit to Gradescope. https://www.gradescope.com/courses/182658,On other versions, it may be File | Download As (PDF) and then submit to Gradescope.\n",
+    "\n",
+    "To submit to Gradescope, log into the [website](https://www.gradescope.com/courses/182658), add course **9W7PW3** (if not already added) and submit. The assignment name should match the name of this notebook."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Good luck!"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
